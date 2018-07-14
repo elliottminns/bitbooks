@@ -12,9 +12,11 @@
       </div>
     </div>
   </div>
-  <div class="container" v-if="products">
-    <div class="tile is-ancestor">
-      <div class="tile is-parent" v-for="(product, index) in products" :key="index">
+  <div class="section container" v-if="products">
+    <div class="columns is-multiline">
+      <div class="column is-one-third"
+           v-for="(product, index) in products" :key="index">
+           <product :product="product" />
       </div>
     </div>
   </div>
@@ -37,6 +39,7 @@ export default {
   },
   async mounted() {
     this.products = await Products.get()
+    console.log(this.products)
   }
 }
 </script>

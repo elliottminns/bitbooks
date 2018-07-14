@@ -8,6 +8,7 @@ yarn-error.log*
 web/dist
 api/src/static/index.js
 api/src/static/static
+secrets.json
 
 # Runtime data
 pids
