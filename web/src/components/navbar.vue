@@ -9,9 +9,6 @@
     <router-link class="navbar-item" to="/products">
     <span>Products</span>
     </router-link>
-    <router-link class="navbar-item" to="/orders">
-    <span>Orders</span>
-    </router-link>
   </div>
 </nav>
 </template>
