@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/elliottminns/bitbooks#readme",
   "dependencies": {
+    "bip32": "^0.1.0",
+    "bitcoinjs-lib": "git+https://github.com/bitcoinjs/bitcoinjs-lib.git",
     "koa": "^2.5.2",
     "koa-bodyparser": "^4.2.1",
     "koa-morgan": "^1.0.1",

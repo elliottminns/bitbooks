@@ -6,6 +6,8 @@
     "ADMIN_EMAIL": "admin@example.com",
     "SMTP_HOST": "smtp.gmail.com",
     "SMTP_USER": "myemail@gmail.com",
-    "SMTP_PASS": "myemailpasswordforgmail"
+    "SMTP_PASS": "myemailpasswordforgmail",
+    "XPUB": "tpubDDMQRBh4e661n231SuHCtezsyrJvj1hpUTxM9iE7mZdR8UgopuJJdwovkX6LQXC1oBwrWiB3Hi7aJAhRG3RmAMToXNBGZ7ztodSRB8LHc4U",
+    "TESTNET": true
   }
 }

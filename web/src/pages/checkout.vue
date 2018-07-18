@@ -26,14 +26,21 @@
       <div class="column">
         <div class="tabs is-centered is-medium is-boxed">
           <ul>
-            <li class="is-active"><a>Pay With Card</a></li>
+            <li :class="{'is-active': isCard }">
+              <a @click="cardClicked">Pay With Card</a>
+            </li>
+            <li :class="{'is-active': isCrypto }">
+              <a @click="cryptoClicked">Pay With Crypto</a>
+            </li>
           </ul>
         </div>
-        <card-form />
+        <card-form v-if="isCard" />
+        <crypto-pos v-if="isCrypto" :product="product" />
       </div>
     </div>
   </div>
   <div class="container is-loading is-big" v-else>
+    <div class="loader"></div>
   </div>
 </div>
 </template>
@@ -43,18 +50,35 @@ import Navbar from '@/components/navbar'
 import Products from '@/api/products'
 import Product from '@/components/product'
 import CardForm from '@/components/card-form'
+import CryptoPos from '@/components/crypto-pos'
 
 export default {
-  components: { Navbar, Product, CardForm },
+  components: { Navbar, Product, CardForm, CryptoPos },
   data() {
     return {
-      product: null
+      product: null,
+      state: 'card'
     }
   },
   async mounted() {
     const id = this.$route.params.id
     this.product = await Products.getWithId(id)
-    console.log(this.products)
+  },
+  computed: {
+    isCard() {
+      return this.state === 'card'
+    },
+    isCrypto() {
+      return this.state === 'crypto'
+    }
+  },
+  methods: {
+    cardClicked() {
+      this.state = 'card'
+    },
+    cryptoClicked() {
+      this.state = 'crypto'
+    }
   }
 }
 </script>
