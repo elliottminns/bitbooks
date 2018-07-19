@@ -14,6 +14,16 @@ module.exports = {
       '/api': {
         target: 'http://localhost:3000',
         changeOrigin: true
+      },
+      '/connect': {
+        target: 'http://localhost:4000',
+        changeOrigin: true,
+        ws: true
+      },
+      '/socket.io': {
+        target: 'http://localhost:4000',
+        ws: true,
+        changeOrigin: true
       }
     },
 

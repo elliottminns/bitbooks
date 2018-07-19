@@ -10,6 +10,7 @@ const router = require('../routing')
 const errorMiddleware = require('../middleware/error')
 const productList = require('../../../products.json')
 const Product = require('./../api/products/model')
+const socket = require('../socket')
 
 const api = new Koa()
 api.use(require('koa-response-time')())
@@ -39,8 +40,15 @@ module.exports = {
     try {
       await database.connect()
       await setupProducts()
+      await socket.listen(4000)
       await app.listen(3000)
       console.log('App running on port 3000')
+
+      socket.io.on('connection', async (socket) => {
+        const order = socket.handshake.query.order
+        socket.join(order)
+        socket.emit('update', {'state': 'waiting'})
+      })
     } catch (error) {
       console.log(error)
     }
