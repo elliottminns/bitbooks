@@ -2,11 +2,13 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import '@/styles/configure.scss'
 import Vue from 'vue'
+import VueQrcode from '@xkeshi/vue-qrcode'
 import App from './App'
 import router from './router'
 import axios from 'axios'
 import NProgress from 'nprogress'
 
+Vue.component(VueQrcode.name, VueQrcode)
 Vue.config.productionTip = false
 
 axios.interceptors.request.use(function(config) {
