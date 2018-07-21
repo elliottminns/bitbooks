@@ -3,6 +3,7 @@ const Product = require('../products/model')
 const request = require('request-promise-cache')
 const bitcoin = require('bitcoinjs-lib')
 const config = require('../../configuration')
+const coinservice = require('../../coinservice')
 const xpub = config.get('XPUB')
 const isTestnet = config.get('TESTNET') === 'true'
 const network = isTestnet ? bitcoin.networks.testnet : bitcoin.networks.bitcoin
@@ -37,10 +38,14 @@ exports.create = async function({ price, productId } = {}) {
 
   const address = await getNewAddress()
 
-  return await Order.create({
+  const order = await Order.create({
     paymentAddress: address,
     amount: amount,
     price: price,
     product: product
   })
+
+  await coinservice.watchAddress({ address, order: order._id })
+
+  return order
 }

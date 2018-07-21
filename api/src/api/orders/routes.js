@@ -5,7 +5,7 @@ exports.createOrder = async function(ctx) {
 }
 
 exports.routes = function(router) {
-  router.post('/', this.createOrder);
+  router.post('/', this.createOrder)
   return router
 }
 
