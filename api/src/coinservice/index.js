@@ -17,7 +17,12 @@ class CoinService {
   async watchAddress({
     order, address
   }) {
-    return this.client.request('importaddress', [address, order])
+    return this.client.request('importaddress', [address, "order", false])
+      .then(r => r.result)
+  }
+
+  async getTransaction(txid) {
+    return this.client.request('gettransaction', [txid, true])
       .then(r => r.result)
   }
 }

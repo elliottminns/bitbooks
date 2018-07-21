@@ -17,6 +17,12 @@
       <span class="loader"></span>
       <span class="title is-5">Waiting for confirmation</span>
     </div>
+    <div v-if="state === 'received'">
+      <span class="title is-5">Payment Received, we will send your ebook once we have 3 confirmations</span>
+    </div>
+    <div v-if="state === 'error'">
+      <span class="title is-5">An error occured, please contact support with order id {{ order._id }}</span>
+    </div>
   </div>
 </div>
 </template>
