@@ -1,6 +1,8 @@
 const controller = require('./controller')
 
 exports.onBlockUpdate = async function(ctx) {
+  const blockhash = ctx.request.body.blockhash
+  controller.onBlock(blockhash)
   ctx.status = 200
 }
 
